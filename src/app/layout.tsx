@@ -1,0 +1,42 @@
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
+import { Footer } from "@/components/Footer";
+import { MarketProvider } from "@/components/MarketProvider";
+import { Navbar } from "@/components/Navbar";
+import { Ticker } from "@/components/Ticker";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে",
+  description: "চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার আজকের বাজার দর এক জায়গায়।",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="bn">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="flex min-h-screen flex-col">
+        <MarketProvider>
+          <Navbar />
+          <Ticker />
+          <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">{children}</main>
+          <Footer />
+        </MarketProvider>
+        <Toaster position="top-center" />
+      </body>
+    </html>
+  );
+}
