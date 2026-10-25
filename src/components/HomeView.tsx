@@ -1,11 +1,10 @@
 "use client";
-import { toBnDigits } from "@/lib/bn";
+import { banglaToday, toBnDigits } from "@/lib/bn";
 import { Hero } from "./Hero";
 import { useMarket } from "./MarketProvider";
 import { ProductGrid } from "./ProductGrid";
 import { ProductGridSkeleton } from "./Skeletons";
 import { useEffect, useState } from "react";
-import { banglaToday } from "@/lib/bn";
 
 export function HomeView() {
   const { products, loading } = useMarket();
