@@ -39,13 +39,13 @@ export function Navbar() {
             <>
               <Link
                 href="/signin"
-                className="btn btn-sm sm:btn-md border-transparent bg-transparent font-semibold text-[#1d271f] shadow-none hover:bg-[#f0f5f0]"
+                className="btn btn-sm sm:btn-md sm:px-[17px] border-transparent bg-transparent font-semibold text-[#1d271f] shadow-none hover:bg-[#f0f5f0]"
               >
                 সাইন ইন
               </Link>
               <Link
                 href="/signup"
-                className="btn btn-sm sm:btn-md border-[#047f39] bg-[#05893e] font-semibold text-[#f3fbf4] hover:bg-[#047f39]"
+                className="btn btn-sm sm:btn-md sm:px-[17px] border-[#047f39] bg-[#05893e] font-semibold text-[#f3fbf4] hover:bg-[#047f39]"
               >
                 সাইন আপ
               </Link>
@@ -64,7 +64,7 @@ export function Navbar() {
               <li key={category.slug} className="shrink-0">
                 <Link
                   href={href}
-                  className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+                  className={`flex items-center gap-1.5 rounded-lg px-[13px] py-2 text-xs font-semibold transition ${
                     active ? "bg-[#05893e] text-[#f3fbf4]" : "hover:bg-[#f0f5f0]"
                   }`}
                 >

@@ -47,7 +47,7 @@ export function HomeView() {
       {/* scroll-mt keeps the heading from hiding under the top edge after the anchor scroll */}
       <section id="সব-পণ্য" className="scroll-mt-4">
         <h2 className="text-xl font-bold">সব পণ্য</h2>
-        <p className="mb-3 mt-1 text-sm">
+        <p className="mb-4 mt-3 text-sm">
           {loading ? "পণ্য লোড হচ্ছে…" : `মোট ${toBnDigits(products.length)}টি পণ্য দেখানো হচ্ছে`}
         </p>
         {loading ? <ProductGridSkeleton count={9} /> : <ProductGrid products={products} />}

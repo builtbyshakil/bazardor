@@ -4,7 +4,7 @@ import Image from "next/image";
 export function Hero({ today }: { today: string }) {
   return (
     <section className="overflow-hidden rounded-3xl border border-[#e1e8e1] bg-[#fafcfa]">
-      <div className="flex flex-col items-center gap-6 px-4 py-8 md:flex-row md:justify-between md:px-10 md:py-10">
+      <div className="flex flex-col items-center gap-6 px-4 py-8 md:flex-row md:justify-between md:px-4 md:py-[9px]">
         <div className="max-w-xl text-center md:text-left">
           <span className="inline-block min-h-7 rounded-full bg-[#05893e]/10 px-3 py-1 text-sm font-medium text-[#05893e]">
             {today}
@@ -17,7 +17,7 @@ export function Hero({ today }: { today: string }) {
           {/* A normal anchor link: it scrolls to the id below, it does not change the route */}
           <a
             href="#সব-পণ্য"
-            className="btn btn-sm sm:btn-md mt-5 border-[#047f39] bg-[#05893e] font-semibold text-[#f3fbf4] hover:bg-[#047f39]"
+            className="btn btn-sm sm:btn-md sm:px-[17px] mt-5 border-[#047f39] bg-[#05893e] font-semibold text-[#f3fbf4] hover:bg-[#047f39]"
           >
             সব পণ্য দেখুন
           </a>
@@ -29,7 +29,7 @@ export function Hero({ today }: { today: string }) {
           width={315}
           height={263}
           priority
-          className="h-auto w-56 md:w-80"
+          className="h-auto w-56 md:w-[315px]"
         />
       </div>
     </section>
