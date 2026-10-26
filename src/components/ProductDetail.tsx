@@ -6,7 +6,6 @@ import { NotFoundView } from "./NotFoundView";
 import { getChangeStyle, PriceBadge } from "./PriceChange";
 import { DetailSkeleton } from "./Skeletons";
 
-// the URL part can be the product's slug or its id
 export function ProductDetail({ slug }: { slug: string }) {
   const { products, loading } = useMarket();
 
@@ -19,7 +18,7 @@ export function ProductDetail({ slug }: { slug: string }) {
 
   const { color } = getChangeStyle(product.change);
   const diff = product.previousPrice !== null ? Math.abs(product.price - product.previousPrice) : null;
-  // market summary line, e.g. "গতকালের তুলনায় আজ দাম বেড়েছে · ২ টাকা"
+
   const summary =
     product.description ||
     (product.change > 0.049
@@ -30,7 +29,7 @@ export function ProductDetail({ slug }: { slug: string }) {
 
   return (
     <div className="space-y-6">
-      {/* breadcrumb: হোম › চাল › পণ্যের নাম */}
+
       <nav className="flex flex-wrap items-center gap-2 text-sm">
         <Link href="/" className="hover:text-[#05893e]">
           হোম
@@ -43,7 +42,6 @@ export function ProductDetail({ slug }: { slug: string }) {
         <span className="font-medium">{product.name}</span>
       </nav>
 
-      {/* Top summary card */}
       <section className="flex flex-col gap-5 rounded-2xl border border-[#e1e8e1] bg-[#fafcfa] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <div className="flex items-start gap-4">
           <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#f0f5f0] text-4xl">
@@ -76,7 +74,6 @@ export function ProductDetail({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* Price summary: min / max / average */}
       <section>
         <h2 className="mb-3 text-lg font-semibold">দামের সারসংক্ষেপ</h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -86,7 +83,6 @@ export function ProductDetail({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* Market wise price table */}
       <section>
         <h2 className="mb-3 text-lg font-semibold">বাজারভিত্তিক আজকের দাম</h2>
         {product.markets.length === 0 ? (

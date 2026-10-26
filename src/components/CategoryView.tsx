@@ -14,7 +14,6 @@ export function CategoryView({ slug }: { slug: string }) {
   const category = categories.find((c) => c.slug === slug);
   const inCategory = useMemo(() => products.filter((p) => p.categorySlug === slug), [products, slug]);
 
-  // Sorting works on the real number (p.price), NOT on the Bengali text like "১৪৮ টাকা".
   const sorted = useMemo(() => {
     const list = [...inCategory];
     if (sort === "price-asc") list.sort((a, b) => a.price - b.price);
@@ -37,7 +36,6 @@ export function CategoryView({ slug }: { slug: string }) {
     );
   }
 
-  // invalid slug, or a category with no products
   if (!category || inCategory.length === 0) {
     return (
       <NotFoundView

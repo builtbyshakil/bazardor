@@ -1,8 +1,6 @@
-// The shapes our whole app uses. API data is converted into these in normalize.ts
-
 export type Market = {
-  name: string; // বাজার
-  division: string; // বিভাগ
+  name: string;
+  division: string;
   min: number;
   max: number;
   avg: number;
@@ -19,12 +17,12 @@ export type Product = {
   slug: string;
   name: string;
   emoji: string;
-  unit: string; // e.g. "কেজি"
+  unit: string;
   categorySlug: string;
   categoryName: string;
-  price: number; // today's price
+  price: number;
   previousPrice: number | null;
-  change: number; // percent, + means up, - means down
+  change: number;
   description: string;
   min: number;
   max: number;

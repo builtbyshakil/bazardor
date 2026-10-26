@@ -13,7 +13,6 @@ body {
   color: #1d271f;
 }
 
-/* Price ticker (marquee): the list is shown twice, and we slide it left by exactly half */
 @keyframes ticker-scroll {
   from {
     transform: translateX(0);
@@ -33,7 +32,6 @@ body {
   animation-play-state: paused;
 }
 
-/* hide the scrollbar on the category chips row (still scrollable on mobile) */
 .no-scrollbar {
   scrollbar-width: none;
 }

@@ -3,7 +3,6 @@ import { formatTaka, unitLabel } from "@/lib/bn";
 import type { Product } from "@/lib/types";
 import { PriceBadge } from "./PriceChange";
 
-// One product card. Clicking it opens the product details page.
 export function ProductCard({ product }: { product: Product }) {
   return (
     <Link

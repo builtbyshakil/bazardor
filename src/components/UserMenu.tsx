@@ -5,7 +5,6 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { signOut } from "@/lib/auth-client";
 
-// Shown in the navbar when the user is logged in: avatar + name + small dropdown
 export function UserMenu({ name, image }: { name: string; image?: string | null }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -29,7 +28,7 @@ export function UserMenu({ name, image }: { name: string; image?: string | null 
         aria-expanded={open}
       >
         {image ? (
-          // eslint-disable-next-line @next/next/no-img-element
+
           <img src={image} alt={name} className="h-9 w-9 rounded-[10px] object-cover" />
         ) : (
           <span className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-[#05893e] font-semibold text-[#f3fbf4]">
@@ -42,7 +41,7 @@ export function UserMenu({ name, image }: { name: string; image?: string | null 
 
       {open && (
         <>
-          {/* invisible layer: clicking anywhere outside closes the menu */}
+
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute right-0 z-50 mt-2 w-48 rounded-xl border border-[#e1e8e1] bg-[#fafcfa] p-1 shadow-lg">
             <Link

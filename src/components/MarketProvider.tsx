@@ -1,6 +1,5 @@
 "use client";
-// Fetches products + categories ONE time and shares them with every page
-// (navbar, ticker, home, category, product details) through React context.
+
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { loadMarketData } from "@/lib/api";
 import { FALLBACK_CATEGORIES } from "@/lib/fallback-data";
@@ -21,7 +20,7 @@ const MarketContext = createContext<MarketState>({
 export function MarketProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<MarketState>({
     products: [],
-    categories: FALLBACK_CATEGORIES, // so the navbar is never empty while loading
+    categories: FALLBACK_CATEGORIES,
     loading: true,
   });
 

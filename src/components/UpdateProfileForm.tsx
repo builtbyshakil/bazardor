@@ -25,7 +25,7 @@ export function UpdateProfileForm() {
     }
 
     setLoading(true);
-    // BetterAuth "update user": https://better-auth.com/docs/concepts/users-accounts#update-user
+
     const { error } = await authClient.updateUser({ name });
     setLoading(false);
 
@@ -51,7 +51,7 @@ export function UpdateProfileForm() {
       <p className="mb-5 mt-1 text-sm">আপনার নাম পরিবর্তন করুন।</p>
 
       <form onSubmit={handleSubmit} noValidate className="space-y-4 rounded-2xl border border-[#e1e8e1] bg-[#fafcfa] p-6">
-        {/* key makes the input start with the current name */}
+
         <Field label="নাম" id="name" type="text" defaultValue={session.user.name} key={session.user.id} autoComplete="name" />
 
         {error && (

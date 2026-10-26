@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-// Eyebrow + heading + subtitle + CTA on the left, illustration on the right
 export function Hero({ today }: { today: string }) {
   return (
     <section className="overflow-hidden rounded-3xl border border-[#e1e8e1] bg-[#fafcfa]">
@@ -14,7 +13,7 @@ export function Hero({ today }: { today: string }) {
             চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং
             দামের পরিবর্তন এক জায়গায়।
           </p>
-          {/* A normal anchor link: it scrolls to the id below, it does not change the route */}
+
           <a
             href="#সব-পণ্য"
             className="btn btn-sm sm:btn-md sm:px-[17px] mt-5 border-[#047f39] bg-[#05893e] font-semibold text-[#f3fbf4] hover:bg-[#047f39]"

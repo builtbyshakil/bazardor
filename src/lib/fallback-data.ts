@@ -1,4 +1,3 @@
-// Backup data (taken from the Figma design) so the site still works if the API is down.
 import type { Category, Market, Product } from "./types";
 
 export const FALLBACK_CATEGORIES: Category[] = [
@@ -12,7 +11,6 @@ export const FALLBACK_CATEGORIES: Category[] = [
   { slug: "mosla", name: "মসলা", emoji: "🌶️" },
 ];
 
-// [emoji, name, unit, category slug, price, change %]
 type Row = [string, string, string, string, number, number];
 
 const ROWS: Row[] = [
@@ -51,7 +49,6 @@ const ROWS: Row[] = [
   ["🍃", "ধনেপাতা গুঁড়া", "কেজি", "mosla", 265, 0],
 ];
 
-// The 12 markets that appear in the Figma table
 const MARKETS: [string, string][] = [
   ["মাঠ বাজার", "ময়মনসিংহ"],
   ["সদর বাজার", "রাজশাহী"],
@@ -71,7 +68,7 @@ const round1 = (n: number) => Math.round(n * 10) / 10;
 
 function makeMarkets(price: number): Market[] {
   return MARKETS.map(([name, division], i) => {
-    // spread the markets a little under/over today's price
+
     const avg = round1(price * (0.94 + i * 0.0105));
     return {
       name,

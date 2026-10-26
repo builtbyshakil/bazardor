@@ -1,5 +1,3 @@
-// Loading placeholders (DaisyUI "skeleton" class)
-
 export function ProductCardSkeleton() {
   return (
     <div className="rounded-2xl border border-[#e1e8e1] bg-[#fafcfa] p-4">

@@ -11,13 +11,12 @@ export function SignInForm() {
   const router = useRouter();
   const params = useSearchParams();
   const redirectTo = params.get("redirect") || "/";
-  // only allow redirects inside our own site
+
   const safeRedirect = redirectTo.startsWith("/") && !redirectTo.startsWith("//") ? redirectTo : "/";
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // A protected page sent the user here -> tell them why
   useEffect(() => {
     if (params.get("reason") === "protected") {
       toast.error("এই পেজ দেখতে আগে সাইন ইন করুন");

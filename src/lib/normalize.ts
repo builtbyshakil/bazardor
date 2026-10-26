@@ -1,6 +1,3 @@
-// The API response shape was not visible while building this app, so these functions
-// accept many possible key names. If your real API uses other keys, add them in the
-// pick(...) lists below - this is the ONLY file you need to touch.
 import { toNumber } from "./bn";
 import type { Category, Market, Product } from "./types";
 
@@ -8,7 +5,6 @@ type Raw = Record<string, unknown>;
 
 const isObject = (v: unknown): v is Raw => typeof v === "object" && v !== null && !Array.isArray(v);
 
-// returns the first key that exists on the object
 function pick(obj: Raw, keys: string[]): unknown {
   for (const key of keys) {
     if (obj[key] !== undefined && obj[key] !== null && obj[key] !== "") return obj[key];
@@ -23,7 +19,6 @@ const asText = (v: unknown): string => {
   return "";
 };
 
-// The list can come as [...] or { data: [...] } or { products: [...] } etc.
 export function unwrapList(json: unknown, keys: string[]): Raw[] {
   if (Array.isArray(json)) return json.filter(isObject);
   if (isObject(json)) {
@@ -39,7 +34,6 @@ export function unwrapList(json: unknown, keys: string[]): Raw[] {
   return [];
 }
 
-// A single item can come as {...} or { data: {...} } or { product: {...} }
 export function unwrapOne(json: unknown, keys: string[]): Raw | null {
   if (!isObject(json)) return null;
   for (const key of [...keys, "data", "result"]) {
@@ -75,7 +69,7 @@ function normalizeMarket(raw: Raw): Market | null {
 }
 
 export function normalizeProduct(raw: Raw, categories: Category[]): Product {
-  // ----- category -----
+
   const rawCategory = pick(raw, ["category", "categorySlug", "category_slug", "categoryId", "category_id"]);
   const catText = isObject(rawCategory)
     ? asText(pick(rawCategory, ["slug", "id", "name"]))
@@ -87,7 +81,6 @@ export function normalizeProduct(raw: Raw, categories: Category[]): Product {
     (c) => c.slug === catText || c.name === catText || c.name === catName || c.slug === catName,
   );
 
-  // ----- markets & prices -----
   const marketList = pick(raw, ["markets", "marketPrices", "market_prices", "bazars", "prices", "marketWise"]);
   const markets = (Array.isArray(marketList) ? marketList : [])
     .filter(isObject)

@@ -26,7 +26,6 @@ export function SignUpForm() {
     const password = String(form.get("password") || "");
     const confirm = String(form.get("confirm") || "");
 
-    // simple checks before we call the server
     if (!name) return fail("আপনার নাম লিখুন");
     if (!/^\S+@\S+\.\S+$/.test(email)) return fail("সঠিক ইমেইল দিন");
     if (password.length < 8) return fail("পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে");

@@ -34,11 +34,10 @@ export function ProfileView() {
         <p className="text-sm">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
       </div>
 
-      {/* avatar + name + email + sign out */}
       <div className="flex flex-col gap-4 rounded-2xl border border-[#e1e8e1] bg-[#fafcfa] p-5 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">
           {image ? (
-            // eslint-disable-next-line @next/next/no-img-element
+
             <img src={image} alt={name} className="h-16 w-16 rounded-2xl object-cover" />
           ) : (
             <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#05893e] text-2xl font-semibold text-[#f3fbf4]">
@@ -74,7 +73,6 @@ export function ProfileView() {
             </div>
           </dl>
 
-          {/* C3: goes to a separate page that has the update form */}
           <Link
             href="/profile/update"
             className="btn btn-sm sm:btn-md mt-5 w-full border-[#047f39] bg-[#05893e] font-semibold text-[#f3fbf4] hover:bg-[#047f39]"

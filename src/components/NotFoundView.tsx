@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-// Friendly 404 used by the global 404 page, invalid categories and unknown products
 export function NotFoundView({
   title = "পেজটি খুঁজে পাওয়া যায়নি",
   message = "দুঃখিত, আপনি যে পেজটি খুঁজছেন সেটি নেই বা সরিয়ে নেওয়া হয়েছে।",

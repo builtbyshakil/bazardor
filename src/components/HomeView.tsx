@@ -14,13 +14,11 @@ export function HomeView() {
     setToday(banglaToday());
   }, []);
 
-  // Top 6 risers: biggest positive change first
   const risers = products
     .filter((p) => p.change > 0.049)
     .sort((a, b) => b.change - a.change)
     .slice(0, 6);
 
-  // Top 6 fallers: biggest negative change first
   const fallers = products
     .filter((p) => p.change < -0.049)
     .sort((a, b) => a.change - b.change)
@@ -44,7 +42,6 @@ export function HomeView() {
         {loading ? <ProductGridSkeleton count={6} /> : <ProductGrid products={fallers} />}
       </section>
 
-      {/* scroll-mt keeps the heading from hiding under the top edge after the anchor scroll */}
       <section id="সব-পণ্য" className="scroll-mt-4">
         <h2 className="text-xl font-bold">সব পণ্য</h2>
         <p className="mb-4 mt-3 text-sm">

@@ -4,7 +4,6 @@ import { getChangeStyle } from "./PriceChange";
 import { formatPercent } from "@/lib/bn";
 import { useMarket } from "./MarketProvider";
 
-// Infinite scrolling price strip under the navbar
 export function Ticker() {
   const { products, loading } = useMarket();
 
@@ -38,7 +37,7 @@ export function Ticker() {
   return (
     <div className="overflow-hidden border-b border-[#e1e8e1] bg-[#fafcfa]" aria-label="আজকের দামের তালিকা">
       <div className="ticker-track">
-        {/* the same list twice, so the loop has no gap */}
+
         <div className="flex">{items}</div>
         <div className="flex" aria-hidden="true">
           {items}

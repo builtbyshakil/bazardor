@@ -2,7 +2,6 @@
 
 export type SortOption = "default" | "price-asc" | "price-desc";
 
-// "সাজান [ডিফল্ট ▾]"
 export function SortSelect({ value, onChange }: { value: SortOption; onChange: (v: SortOption) => void }) {
   return (
     <div className="flex items-center gap-2">
@@ -20,7 +19,7 @@ export function SortSelect({ value, onChange }: { value: SortOption; onChange: (
           <option value="price-asc">দাম: কম থেকে বেশি</option>
           <option value="price-desc">দাম: বেশি থেকে কম</option>
         </select>
-        {/* chevron icon */}
+
         <svg
           className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2"
           viewBox="0 0 24 24"

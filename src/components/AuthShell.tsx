@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-// The centered card used by sign in and sign up (same layout as the Figma)
 export function AuthShell({ title, subtitle, children }: { title: string; subtitle: string; children: ReactNode }) {
   return (
     <div className="mx-auto w-full max-w-104 py-4">

@@ -12,7 +12,6 @@ export function Navbar() {
   const { categories } = useMarket();
   const { data: session, isPending } = useSession();
 
-  // The date is calculated in the browser (not on the server) to avoid a mismatch warning
   const [today, setToday] = useState("");
   useEffect(() => {
     setToday(banglaToday());
@@ -20,7 +19,7 @@ export function Navbar() {
 
   return (
     <header className="border-b border-[#e1e8e1] bg-[#fafcfa]">
-      {/* Row 1: logo + date on the left, auth on the right */}
+
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
         <Link href="/" className="flex items-center gap-2">
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#05893e] text-lg">🛒</span>
@@ -54,7 +53,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Row 2: category links (scrolls sideways on small screens) */}
       <nav className="border-t border-[#f0f5f0]">
         <ul className="no-scrollbar mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-4 py-2">
           {categories.map((category) => {

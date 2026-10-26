@@ -3,14 +3,13 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { signIn } from "@/lib/auth-client";
 
-// "Google দিয়ে চালিয়ে যান" and "GitHub দিয়ে চালিয়ে যান"
 export function SocialButtons({ callbackURL }: { callbackURL: string }) {
   const [busy, setBusy] = useState<"google" | "github" | null>(null);
 
   async function handle(provider: "google" | "github") {
     setBusy(provider);
     const { error } = await signIn.social({ provider, callbackURL });
-    // On success the browser leaves for Google/GitHub, so this only runs on an error
+
     if (error) {
       toast.error(error.message || "সোশ্যাল লগইন করা যায়নি");
       setBusy(null);

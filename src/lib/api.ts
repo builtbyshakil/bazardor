@@ -1,5 +1,3 @@
-// Talks to the BazarDor API. We try each base URL in order until one works.
-// If all of them fail, we use the backup data so the site never shows a blank page.
 import { FALLBACK_CATEGORIES, FALLBACK_PRODUCTS } from "./fallback-data";
 import { normalizeCategory, normalizeProduct, unwrapList } from "./normalize";
 import type { Category, Product } from "./types";
@@ -17,7 +15,7 @@ async function fetchJson(path: string): Promise<unknown | null> {
       if (!res.ok) continue;
       return await res.json();
     } catch {
-      // try the next base URL
+      continue;
     }
   }
   return null;
