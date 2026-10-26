@@ -64,7 +64,7 @@ function normalizeMarket(raw: Raw): Market | null {
     division: asText(pick(raw, ["division", "district", "location", "city", "area", "region"])),
     min: min ?? base,
     max: max ?? base,
-    avg: avg ?? (min !== null && max !== null ? (min + max) / 2 : base),
+    avg: avg ?? (min !== null && max !== null ? Math.round((min + max) / 2) : base),
   };
 }
 
@@ -76,7 +76,7 @@ export function normalizeProduct(raw: Raw, categories: Category[]): Product {
     : asText(rawCategory);
   const catName = isObject(rawCategory)
     ? asText(pick(rawCategory, ["name_bn", "nameBn", "name"]))
-    : asText(pick(raw, ["categoryName", "category_name"]));
+    : asText(pick(raw, ["categoryNameBn", "categoryName", "category_name"]));
   const matched = categories.find(
     (c) => c.slug === catText || c.name === catText || c.name === catName || c.slug === catName,
   );
@@ -87,18 +87,26 @@ export function normalizeProduct(raw: Raw, categories: Category[]): Product {
     .map(normalizeMarket)
     .filter((m): m is Market => m !== null);
 
-  const marketAvg = markets.length ? markets.reduce((s, m) => s + m.avg, 0) / markets.length : null;
+  const marketAvg = markets.length ? Math.round(markets.reduce((s, m) => s + m.avg, 0) / markets.length) : null;
   const price =
-    toNumber(pick(raw, ["price", "todayPrice", "today_price", "currentPrice", "current_price", "avgPrice", "avg", "average"])) ??
+    toNumber(pick(raw, ["today", "price", "todayPrice", "today_price", "currentPrice", "current_price", "avgPrice", "avg", "average"])) ??
     marketAvg ??
     0;
   const previousPrice = toNumber(
-    pick(raw, ["previousPrice", "previous_price", "yesterdayPrice", "yesterday_price", "prevPrice", "oldPrice"]),
+    pick(raw, ["yesterday", "previousPrice", "previous_price", "yesterdayPrice", "yesterday_price", "prevPrice", "oldPrice"]),
   );
 
-  let change = toNumber(
-    pick(raw, ["changePercent", "change_percent", "percentChange", "percent_change", "change", "changePct", "percentage"]),
-  );
+  const rawChange = pick(raw, ["change", "changePercent", "change_percent", "percentChange", "percent_change", "changePct", "percentage"]);
+  let change: number | null = null;
+  if (isObject(rawChange)) {
+    const pct = toNumber(pick(rawChange, ["pct", "percent", "percentage", "value"]));
+    const dir = asText(pick(rawChange, ["dir", "direction", "trend"])).toLowerCase();
+    if (pct !== null) {
+      change = dir === "down" ? -Math.abs(pct) : dir === "up" ? Math.abs(pct) : dir === "flat" ? 0 : pct;
+    }
+  } else {
+    change = toNumber(rawChange);
+  }
   if (change === null) {
     change = previousPrice && previousPrice > 0 ? ((price - previousPrice) / previousPrice) * 100 : 0;
   }

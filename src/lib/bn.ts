@@ -34,8 +34,20 @@ export function formatPercent(n: number): string {
   return `${toBnDigits(Math.abs(n).toFixed(1))}%`;
 }
 
+const UNIT_NAMES: Record<string, string> = {
+  kg: "কেজি",
+  litre: "লিটার",
+  liter: "লিটার",
+  dozen: "ডজন",
+  piece: "পিস",
+  pcs: "পিস",
+  gram: "গ্রাম",
+  g: "গ্রাম",
+};
+
 export function shortUnit(unit: string): string {
-  return unit.replace(/^প্রতি\s*/, "").trim();
+  const cleaned = unit.replace(/^প্রতি\s*/, "").trim();
+  return UNIT_NAMES[cleaned.toLowerCase()] ?? cleaned;
 }
 
 export function unitLabel(unit: string): string {
