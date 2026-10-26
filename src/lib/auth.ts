@@ -28,6 +28,12 @@ export const auth = betterAuth({
     enabled: true,
     minPasswordLength: 8,
     autoSignIn: false,
-  },
+  },   
+  account: {
+     accountLinking: {
+       enabled: true,
+       trustedProviders: ["github", "google"],
+     },
+   },
   socialProviders,
 });
