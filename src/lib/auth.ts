@@ -20,10 +20,12 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
   };
 }
-
+const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+const siteUrl = productionHost ? `https://${productionHost}` : process.env.BETTER_AUTH_URL;
 export const auth = betterAuth({
   database: mongodbAdapter(db),
-  baseURL: process.env.BETTER_AUTH_URL,
+  
+  baseURL: siteUrl,
   trustedOrigins: [
   "http://localhost:3000",
   "https://bazardor-ivory.vercel.app",
