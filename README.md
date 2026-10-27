@@ -4,7 +4,7 @@
 
 **প্রয়োজনীয় পণ্যের দাম এক নজরে** — চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার আজকের বাজার দর, বাজারভিত্তিক তুলনাসহ।
 
-[Live Demo](#) · [GitHub Repository](#)
+[Live Demo](https://bazardor-ivory.vercel.app) · [GitHub Repository](https://github.com/builtbyshakil/bazardor)
 
 </div>
 
